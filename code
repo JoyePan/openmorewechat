@@ -1,0 +1,63 @@
+::Last updated on 16/05/2020
+::https://github.com/JoyePan/openmorewechat
+@echo off
+title WINDOWS微信双开
+
+:menu
+cls
+echo 欢迎使用WINDOWS微信双开
+echo 注意:首次使用务必阅读一次软件使用说明
+echo.
+echo 请选择项目: 
+echo.&echo 【1】正常打开
+echo.&echo 【2】双开微信
+echo.&echo 【3】关闭微信后台（无法双开可执行此操作）
+echo.&echo 【4】软件使用说明
+
+echo.
+set /p user_input=请输入数字后按Enter:
+if %user_input% equ 1 goto One
+if %user_input% equ 2 goto Open
+if %user_input% equ 3 goto Kill
+if %user_input% equ 4 goto Setting
+echo.
+echo 输入错误, 请重新输入数字.
+pause
+goto menu
+
+:One
+@echo off
+start /d "C:\" 微信.lnk
+goto menu
+
+:Open
+taskkill /f /im wechat.exe >nul 2>nul
+@echo off
+start /d "C:\" 微信.lnk
+start /d "C:\" 微信.lnk
+start /d "C:\" 微信.lnk
+start /d "C:\" 微信.lnk
+start /d "C:\" 微信.lnk
+start /d "C:\" 微信.lnk
+start /d "C:\" 微信.lnk
+start /d "C:\" 微信.lnk
+goto menu
+
+:Kill
+echo.
+echo 微信后台关闭中
+echo 关闭后可重新执行双开操作
+echo.
+taskkill /f /im wechat.exe >nul 2>nul
+pause
+goto menu
+
+:Setting
+echo.
+echo 很重要的一步:请手动将桌面上的微信快捷方式复制到C盘根目录
+echo 请勿将微信设置为开机启动项
+echo 最好在开机完成后即刻使用(存在任意微信进程在后台时无法多开)
+echo 开发者邮箱：einskind@outlook.com
+echo.
+pause
+goto menu
